@@ -1,10 +1,9 @@
 import tkinter as tk
-
+from janela_pacientes import janela_pacientes
 
 #Funções dos botões
 def click_pacientes():
-  label.config(text="Puxar Pacientes")
-  print(entry.get())
+  janela_pacientes()
 
 def click_consultas():
   label.config(text="Puxar Consultas")
@@ -14,21 +13,21 @@ def click_medicos():
   label.config(text="Puxar Médicos")
   print(entry.get())
 
+def fechar():
+  tela_inicial.destroy()
 
 
-
-#Confg da tela inicial
+#Confg da tela
 tela_inicial = tk.Tk()
 tela_inicial.title("Tela Inicial")
-tela_inicial.geometry("800x640")
+tela_inicial.geometry("800x600")
 tela_inicial.resizable(False, False) 
 tela_inicial.configure(bg="lightblue")
-tela_inicial.attributes('-alpha', 0.95)
 
 entry = tk.Entry(tela_inicial)
 
 
-label = tk.Label(tela_inicial, text="Bem vindo! O que você deseja fazer:")
+label = tk.Label(tela_inicial, text="Bem vindo! O que você deseja fazer?")
 label.place(relx=0.5, rely=0.1, anchor='center')
 
 #Botões
@@ -41,6 +40,8 @@ botao_consultas.config(command=click_consultas)
 botao_medicos = tk.Button(tela_inicial, text="Médicos", bg="blue", fg="white", height=2)
 botao_medicos.place(relx=0.6, rely=0.4, anchor='center')
 botao_medicos.config(command=click_medicos)
-
+sair = tk.Button(tela_inicial, text="Sair", height=2)
+sair.pack(side="bottom")
+sair.config(command=fechar)
 
 tela_inicial.mainloop()
